@@ -1,0 +1,33 @@
+{
+  "name": "messageboard",
+  "version": "1.0.0",
+  "description": "a template for mean projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Daniel Deloucas",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.0",
+    "express": "^4.13.3",
+    "mongoose": "^4.1.8",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dant00ine/node-message-board.git"
+  },
+  "keywords": [
+    "message",
+    "board",
+    "blog",
+    "nodejs"
+  ],
+  "bugs": {
+    "url": "https://github.com/dant00ine/node-message-board/issues"
+  },
+  "homepage": "https://github.com/dant00ine/node-message-board#readme"
+}
