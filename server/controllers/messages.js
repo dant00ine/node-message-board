@@ -28,6 +28,21 @@ module.exports = (function(){
 					res.redirect('/')
 				}
 			})
+		},
+
+		update: function(req, res){
+			
+			var query = {"_id": req.params.id};
+			
+			var update = {$push: {comments: {name: req.body.name, content: req.body.content}}};
+			
+			var options = {new: true};
+			Message.findOneAndUpdate(query, update, options, function(err, results){
+				if(err){
+					console.log('error:', err)
+				}
+				res.json(results);
+			})
 		}
 	}
 })();

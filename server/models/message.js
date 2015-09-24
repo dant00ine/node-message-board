@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 var MessageSchema = new mongoose.Schema({
 	name: String,
 	content: String,
-	comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}],
+	comments: Array,
 	created_at: {type: Date, default: new Date}
 });
 

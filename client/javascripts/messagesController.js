@@ -15,4 +15,15 @@ messageApp.controller('MessagesController', function($scope, MessageFactory){
 		});
 	}
 
+	this.addComment = function(message_id){
+
+		MessageFactory.addComment(that.new_comment, message_id, function(message){
+
+			MessageFactory.getMessages(function(response){
+				that.messages = response;
+			})
+		})
+		that.new_comment = {};
+	}
+
 })
