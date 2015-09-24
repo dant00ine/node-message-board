@@ -2,7 +2,7 @@
   "name": "messageboard",
   "version": "1.0.0",
   "description": "a template for mean projects",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -10,8 +10,12 @@
   "author": "Daniel Deloucas",
   "license": "ISC",
   "dependencies": {
+    "angular": "^1.4.6",
+    "angular-route": "^1.4.6",
     "body-parser": "^1.14.0",
+    "bootstrap": "^3.3.5",
     "express": "^4.13.3",
+    "jQuery": "^1.7.4",
     "mongoose": "^4.1.8",
     "path": "^0.12.7"
   },

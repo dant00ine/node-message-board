@@ -1,24 +1,47 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp">
+<html lang="en" ng-app="messageApp">
 <head>
 	<meta charset="UTF-8">
-	<title>TEMPLATE</title>
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<title>Message Board</title>
+	<link rel="stylesheet" type="text/css" src="../node_modules/bootstrap/dist/css/bootstrap.css">
 	<script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-route.js"></script>
+   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-route.js"></script>
 	<script type="text/javascript">
-		var customerApp = angular.module('myApp', ['ngRoute']);
+		var messageApp = angular.module('messageApp', []);
 	</script>
+	<script type="text/javascript" src="javascripts/messagesFactory.js"></script>
+	<script type="text/javascript" src="javascripts/messagesController.js"></script>
+	<script type="text/javascript" src="javascripts/commentsFactory.js"></script>
+	<script type="text/javascript" src="javascripts/commentsController.js"></script>
 	
 </head>
-<body>
-
-	<h1>INDEX</h1>
-
-	<div class='container' ng-view="">
-			
+<body ng-controller = "MessagesController as MC">
+<div class="container">
+	<h1>The Dojo Message Board</h1>
+	<p>Name:</p>
+	<input type="text" ng-model="MC.new_message.name"><br>
+	<p>Message:</p>
+	<textarea cols="25" rows="5" ng-model="MC.new_message.content"></textarea>
+	<input type="submit" ng-click="MC.addMessage()">
+</div>
+	<!-- print all messages -->
+<div class="col-md-4" ng-repeat="message in MC.messages">
+	<b ng-bind="message.name"></b>
+	<div ng-bind="message.content"></div>
+	<div ng-bind="message.created_at"></div>
+	<div ng-repeat="comment in CC.comments">
+		<b ng-bind="comment.name"></b>
+		<div ng-bind="comment.content"></div>
 	</div>
-	
+	<!-- comment functionality -->
+	<form ng-controller="CommentsController as CC">
+		<input ng-model="CC.new_comment.name">
+		<textarea ng-model="CC.new_comment.content"></textarea>
+		<input type="hidden" ng-model="CC.new_comment._message" ng-bind="message._id">
+		<input type="submit" ng-click="CC.addComment()">
+	</form>
+</div>
+
 </body>
 </html>
