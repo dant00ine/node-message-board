@@ -4,14 +4,16 @@ var Message = mongoose.model('Message');
 module.exports = (function(){
 	return {
 		show: function(req, res){
-			Message.find({}, function(err, results){
-				console.log(results);
+			Message.find({})
+				.populate('comments')
+			.exec(function(err, messages){
 				if(err){
 					console.log(err);
 				} else {
-					res.json(results);
+					res.json(messages);
 				}
 			})
+
 		},
 
 		add: function(req, res){

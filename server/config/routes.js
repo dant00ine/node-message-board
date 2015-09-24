@@ -18,8 +18,7 @@ module.exports = function(app) {
     app.post('/messages', function(req, res){
     	messages.add(req, res);
     });
-
-    app.post('/message/:id', function(req, res){
+    app.post('/comments/:id', function(req, res){
         comments.add(req, res);
     });
   }

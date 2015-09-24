@@ -20,12 +20,10 @@ messageApp.factory('MessageFactory', function($http){
 
 	}
 
-	factory.addComment = function(info, callback){
-		console.log('angular FACTORY for add comment reached');
-		console.log('logging info', info);
-		$http.post('/comments', info).success(function(response){
-			console.log('angular factory for add COMMENT reached');
-			callback(response);
+	factory.addComment = function(info, message_id, callback){
+
+		$http.post('/comments/'+message_id, info).success(function(response){
+			callback();
 		})
 	}
 
